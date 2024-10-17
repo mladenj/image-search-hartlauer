@@ -27,8 +27,13 @@ st.write("""
 ## Demo
 """)
 
+# Caching the model
+@st.cache_resource
+def load_model():
+    return SentenceTransformer('sentence-transformers/clip-ViT-B-32-multilingual-v1')
+
 # Load the CLIP model
-model = SentenceTransformer("clip-ViT-B-32")
+model = load_model()
 
 # Text query input
 query = st.text_input("Enter your search query:")
